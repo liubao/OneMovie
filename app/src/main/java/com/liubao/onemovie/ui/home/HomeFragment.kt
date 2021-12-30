@@ -31,14 +31,14 @@ class HomeFragment : Fragment() {
 
         val textView: TextView = binding.textHome
         homeViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
+            textView.text = it.toString()
         })
         return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        homeViewModel.testService().observe(this.viewLifecycleOwner, Observer {
+        homeViewModel.text.observe(this.viewLifecycleOwner, Observer {
             binding.textHome.text = it.toString()
         })
 
