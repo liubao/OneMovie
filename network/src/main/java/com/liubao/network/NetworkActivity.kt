@@ -1,15 +1,23 @@
 package com.liubao.network
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import okhttp3.OkHttpClient
-import okhttp3.Request
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 
 class NetworkActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_network)
 
-
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    setContentView(R.layout.activity_network)
+    findViewById<TextView>(R.id.text).apply {
+      setOnClickListener {
+        supportFragmentManager.beginTransaction().add(
+          R.id.frameLayout,
+          NetworkFragment()
+        )
+      }
     }
+
+  }
+
 }

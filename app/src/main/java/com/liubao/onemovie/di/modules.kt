@@ -10,24 +10,25 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import retrofit2.Retrofit
-import kotlin.coroutines.CoroutineContext
 
 val NAMED_IO_DISPATCHER = named("named_io_dispatcher")
 
 val appModule = module {
-    single<Retrofit> {
-        RetrofitProviderImpl().provide()
-    }
-    single<CoroutineDispatcher>(NAMED_IO_DISPATCHER) {
-        Dispatchers.IO
-    }
-    factory<GitHubService> {
-        get<Retrofit>().create(GitHubService::class.java)
-    }
-    factory {
-        GitHubDataSource(ioDispatcher = get(NAMED_IO_DISPATCHER), get())
-    }
-    viewModel {
-        HomeViewModel(get())
-    }
+  single<Retrofit> {
+    RetrofitProviderImpl().provide()
+  }
+  single<CoroutineDispatcher>(NAMED_IO_DISPATCHER) {
+    Dispatchers.IO
+  }
+  factory<GitHubService> {
+    get<Retrofit>().create(GitHubService::class.java)
+  }
+  factory {
+    GitHubDataSource(ioDispatcher = get(NAMED_IO_DISPATCHER), get())
+  }
+
+  viewModel {
+    HomeViewModel(get())
+  }
+
 }

@@ -1,20 +1,17 @@
 package com.liubao.onemovie.service
 
-import com.liubao.onemovie.model.Repo
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.withContext
 
 class GitHubDataSource(
     val ioDispatcher: CoroutineDispatcher,
     val service: GitHubService
 ) {
-    suspend fun test() = withContext(ioDispatcher) {
-        with(service.listRepos("bao").execute()) {
-            if (this.isSuccessful) {
-                Result.success(this.body() ?: emptyList())
+    suspend fun test() =
+        with(service.listRepos("bao")) {
+            if (!this.isNullOrEmpty()) {
+                Result.success(this)
             } else {
-                Result.failure(Exception(this.errorBody()?.toString()))
+                Result.failure(Exception("this"))
             }
         }
-    }
 }
