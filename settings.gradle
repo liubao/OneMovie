@@ -9,3 +9,4 @@ dependencyResolutionManagement {
 rootProject.name = "OneMovie"
 include ':app'
 include ':network'
+include ':services'

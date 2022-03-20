@@ -1,4 +1,4 @@
-package com.liubao.network
+package com.liubao.onemovie.services
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.liubao.network.test", appContext.packageName)
+        assertEquals("com.liubao.onemovie.services.test", appContext.packageName)
     }
 }
